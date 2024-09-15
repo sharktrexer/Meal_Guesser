@@ -6,7 +6,12 @@
         {% load static %} 
         <link rel="stylesheet" type="text/css" href="{% static 'guessing/site.css' %}" />
     </head>
-    <body>
-        a simple landing page for the meal guessing app, <span class ="message">thanks for viewing {{ name }}!</span>
-    </body>
+
+    <!-- Displays random meal image -->
+     <div class="pic-contain">
+        <img src= {{meal_img}}>
+     </div>
+    <span class="text-contain">
+        This meal is known as    <span class="message">{{ meal_name }} </span>
+    </span>
 </html>

@@ -1,4 +1,33 @@
+body {
+    background-color: teal;
+}
+
 .message {
     font-weight: 600;
-    color: green;
+    color: white;
+}
+
+.text-contain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-contain span {
+    padding: 5px;
+    
+}
+
+/* Meal Picture Styling */
+.pic-contain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+}
+
+.pic-contain img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 300px;
 }
