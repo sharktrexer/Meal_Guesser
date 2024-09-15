@@ -7,17 +7,9 @@ import json, urllib.request
 # Views
 
 def home(request):
-    return HttpResponse("Hello Test")
-
-def name_test(request, name):
-    
     return render(
         request,
-        'guessing/index.html',
-        {
-            'name': name
-        }
-    )
+        "guessing/index.html")
     
 def rand_meal(request):
     

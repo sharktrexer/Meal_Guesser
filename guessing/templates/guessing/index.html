@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Guess That Meal!</title>
-        {% load static %} 
-        <link rel="stylesheet" type="text/css" href="{% static 'guessing/site.css' %}" />
-    </head>
-    <body>
-        a simple landing page for the meal guessing app, <span class ="message">thanks for viewing {{ name }}!</span>
-    </body>
-</html>
+{% extends "guessing/layout.html" %}
+{% block title %}
+Meal Guesser - Home
+{% endblock %}
+{% block content %}
+    a simple landing page for the meal guessing app, <span class ="message">thanks for viewing {{ name }}!</span>
+{% endblock %}
+        

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}{% endblock %}</title>
+        {% load static %} 
+        <link rel="stylesheet" type="text/css" href="{% static 'guessing/site.css' %}" />
+    </head>
+
+    <body> 
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </hr>
+    <footer>
+        <p>By Ibrahim Sydock | 2024</p>
+    </footer>
+    </body>
+</html>

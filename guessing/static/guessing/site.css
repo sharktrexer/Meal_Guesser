@@ -1,5 +1,16 @@
 body {
     background-color: teal;
+    
+}
+
+footer {
+    position: fixed;
+	bottom: 0;
+	margin: 10px;
+}
+
+.content {
+    padding: 5px;
 }
 
 .message {
