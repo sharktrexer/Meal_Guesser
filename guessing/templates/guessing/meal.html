@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Guess That Meal!</title>
-        {% load static %} 
-        <link rel="stylesheet" type="text/css" href="{% static 'guessing/site.css' %}" />
-    </head>
-
+{% extends "guessing/layout.html" %}
+{% block title %}
+    Guess That Meal!
+{% endblock %}
+{% block content %}
     <!-- Displays random meal image -->
-     <div class="pic-contain">
+    <div class="pic-contain">
         <img src= {{meal_img}}>
-     </div>
+    </div>
     <span class="text-contain">
         This meal is known as    <span class="message">{{ meal_name }} </span>
     </span>
-</html>
+{% endblock %}
+

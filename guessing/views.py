@@ -13,6 +13,9 @@ def home(request):
     
 def rand_meal(request):
     
+    #make sure to do rand pic fetching before creating view so that refresh
+    # doesn't change the picture
+    
     # Get random picture
     mealAPI = "https://www.themealdb.com/api/json/v1/1/random.php"
     
