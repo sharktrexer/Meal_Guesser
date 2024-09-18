@@ -1,8 +1,10 @@
 {% extends "guessing/layout.html" %}
+{% load static %} 
 {% block title %}
     Guess That Meal!
 {% endblock %}
 {% block content %}
+
     <!-- Displays random meal image -->
     <div class="pic-contain">
         <img src= {{meal_img}}>
@@ -10,5 +12,16 @@
     <span class="text-contain">
         This meal is known as    <span class="message">{{ meal_name }} </span>
     </span>
+    
+    <div class="text-contain">
+        <button id="guess" onclick="click_buttonn()">Enter Guess</button>
+    </div> 
+    
+    <script>
+        function click_buttonn() {
+            alert("button clicked");
+        }
+    </script>
 {% endblock %}
+
 
