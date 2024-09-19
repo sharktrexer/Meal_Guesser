@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-import json, urllib.request
-
-
-
+from .models import Meal
+from .classes.game_controller import game_controller
+  
 # Views
 
 def home(request):
@@ -15,16 +14,12 @@ def rand_meal(request):
     
     #make sure to do rand pic fetching before creating view so that refresh
     # doesn't change the picture
-    
-    # Get random picture
-    mealAPI = "https://www.themealdb.com/api/json/v1/1/random.php"
-    
-    with urllib.request.urlopen(mealAPI) as url:
-        api_data = json.load(url)
-        
-    meal_img = api_data['meals'][0]['strMealThumb']
-    meal_name = api_data['meals'][0]['strMeal']
-    print(meal_img)
+    #game_controller.Load_Meals()
+    query_results = Meal.objects.all()
+
+    meal_img = str(query_results.get(id=1).Source)
+    meal_name = str(query_results.get(id=1).Name)
+
     return render(
         request,
         'guessing/meal.html',
