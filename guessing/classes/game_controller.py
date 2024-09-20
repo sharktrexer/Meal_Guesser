@@ -47,7 +47,7 @@ def Load_Meals():
         if meal_name in rec_meals:
             continue
         
-        Meal.objects.create(Name= meal_name, Source= meal_img)
+        Meal.objects.create(meal_id= i, Name= meal_name, Source= meal_img)
         rec_meals.append(meal_name)
         i += 1
         
