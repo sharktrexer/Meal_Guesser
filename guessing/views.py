@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Meal
-from .classes.game_controller import game_controller
+from .classes.game_controller import *
   
 # Views
 
@@ -14,11 +14,12 @@ def rand_meal(request):
     
     #make sure to do rand pic fetching before creating view so that refresh
     # doesn't change the picture
-    #game_controller.Load_Meals()
+    Load_Meals()
     query_results = Meal.objects.all()
-
-    meal_img = str(query_results.get(id=1).Source)
-    meal_name = str(query_results.get(id=1).Name)
+    for m in query_results:
+        meal_img = str(m.Source)
+        meal_name = str(m.Name)
+        break
 
     return render(
         request,
