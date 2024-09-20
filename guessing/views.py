@@ -12,8 +12,7 @@ def home(request):
     
 def rand_meal(request):
     
-    #make sure to do rand pic fetching before creating view so that refresh
-    # doesn't change the picture
+    
     Load_Meals()
     query_results = Meal.objects.all()
     for m in query_results:

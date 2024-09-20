@@ -3,6 +3,11 @@
 Meal Guesser - Home
 {% endblock %}
 {% block content %}
-    a simple landing page for the meal guessing app, <span class ="message">thanks for viewing {{ name }}!</span>
+    <div class="text-contain">
+        Welcome to <span class="message"> Guess That Meal!</span>
+        <form method='GET' action={% url 'rand_meal'%}>
+            <input type='submit' value ='Start Playing!'>
+        </form>
+    </div> 
 {% endblock %}
         
