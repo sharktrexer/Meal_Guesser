@@ -1,0 +1,37 @@
+Home <request> ------------------------------------
+return render
+
+loading <request> ------------------------------------
+calls Load_Meals() to populate database. 
+^ this takes a second so loading page would be nice
+when database is filled, redirect to rand_meal<null>
+return render
+
+# guess is string from text input 
+rand_meal <request, guess> ------------------------------------
+    
+    #ensure guess is cleaned of html/sql injections
+
+    if beginning game:
+        start()
+    if checking guess and chances > 0:
+        validate_input()
+    if final answer or chances <= 0
+        validate_input()
+        cash_in()
+        end = not next_meal()
+        if end
+            redirect to end.html
+
+    meal = all meals 
+
+    return render, including vars:
+        meal img : meal.img
+        meal name : meal.name
+        points
+        chances
+        potential points
+        max points possible : get_max_poss_points()
+
+ending<request> ---------------------------------------
+return render

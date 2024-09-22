@@ -1,0 +1,26 @@
+Home.html-----------------------------------
+
+Text Summary of app
+Start Button - links to loading
+if playing = true:
+    Continue Button - links to rand_meal
+
+loading.html------------------------------
+
+cool loading image of some kind
+
+rand_meal.html------------------------------
+
+display meal image, player points, chances, max points possible 
+display potential points if >= 0
+
+text box for text input
+check guess button
+final answer button
+
+
+end.html ------------------------------------
+
+displays points player won, max points they could have gotten
+button to go Home
+buttom to play again, goes to loading

@@ -11,14 +11,17 @@ subs = {
         }
 
 points = 0                      # total points player earned
-potential_points = 0            # points that can be cashed in before chances expire
+potential_points = -1           # points that can be cashed in before chances expire
 chances = MAX_CHANCES           # num of guess attempts player has remaining
 meal_index = 0                  # index of current meal displayed
 playing = False                 # if the game is playing
  
-max_point_per_meal = []
+max_point_per_meal = []         # number of possible points per meal (words in meal name)
+                                # index lines up with pk of meals in database
 
 def get_max_poss_points():
+    global max_point_per_meal
+    
     max = 0
     for i in max_point_per_meal:
         max += i
@@ -27,17 +30,19 @@ def get_max_poss_points():
 def reset_round_vars():
     global potential_points, chances
     
-    potential_points = 0
+    potential_points = -1
     chances = MAX_CHANCES
  
 def start():
-    global points, meal_index
+    global points, meal_index, playing, max_point_per_meal
     
     reset_round_vars()
     points = 0
     meal_index = 0
     playing = True
-    
+    max_point_per_meal.clear
+ 
+ # increments index, returns if that index is valid anymore   
 def next_meal():
     global meal_index, playing
     
@@ -45,7 +50,8 @@ def next_meal():
     reset_round_vars()
     if meal_index >= MAX_MEALS:
         playing=False
-        meal_index = -1
+        return False
+    return True
 
 def cash_in():
     global potential_points, points
@@ -64,7 +70,7 @@ def Validate_Name_Input(name_input):
     
     # Lists
     input_vals = name_input.lower().split()
-    meal_name = str(Meal.objects.get(meal_id= meal_index).Name).lower()
+    meal_name = str(Meal.objects.get(meal_id= meal_index).cleaned_name)
     used_tokens = []
     
     p = 0
@@ -111,6 +117,10 @@ def Load_Meals():
         meal_name_clean = re.sub('\-', ' ', meal_name_clean) #replaces '-' with ' '
         meal_name_clean = meal_name_clean.lower()
         
+        num_of_meal_tokens = len(meal_name_clean.split(' '))
+        
+        max_point_per_meal.append(num_of_meal_tokens)
+        
         if meal_name in rec_meals:
             continue
         
@@ -119,4 +129,4 @@ def Load_Meals():
         rec_meals.append(meal_name)
         i += 1
 #end method         
-    
+ 
