@@ -7,7 +7,7 @@ if playing = true:
 
 loading.html------------------------------
 
-cool loading image of some kind
+cool loading image of some kind? Might be more trouble than worth
 
 rand_meal.html------------------------------
 

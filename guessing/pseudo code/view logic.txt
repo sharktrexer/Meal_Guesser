@@ -1,11 +1,11 @@
 Home <request> ------------------------------------
 return render
 
+# rand_meal will immediately pop database when loaded
+# this is a simple page too at until the rand-Meal request goes through
 loading <request> ------------------------------------
-calls Load_Meals() to populate database. 
-^ this takes a second so loading page would be nice
-when database is filled, redirect to rand_meal<null>
-return render
+
+maybe in the future
 
 # guess is string from text input 
 rand_meal <request, guess> ------------------------------------

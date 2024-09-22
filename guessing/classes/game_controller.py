@@ -41,6 +41,8 @@ def start():
     meal_index = 0
     playing = True
     max_point_per_meal.clear
+    
+    Load_Meals()
  
  # increments index, returns if that index is valid anymore   
 def next_meal():
