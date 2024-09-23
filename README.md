@@ -1,7 +1,9 @@
 # Meal Guesser
 This website fetches RESTful JSON data from the [Free Meal API](https://www.themealdb.com/api.php) to obtain multiple random meals and temporarily add them to an SQLite database. 
 This culminates into a fun minigame where you will have to guess the name of a meal by just its image.
-Every correct guess is 1 point, and you only have 5 incorrect guesses until the game is over. **How many points do you think you can get?**
+
+Every correct word you guess from the meal's name gives 1 point. You have 3 chances to determines how many points you earn before permanently submitting your guess.
+**How many points do you think you can get?**
 
 ## Instructions
 
