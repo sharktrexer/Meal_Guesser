@@ -12,19 +12,41 @@ def home(request):
     
 def rand_meal(request):
     
+    goto_next_meal = False
     
-    Load_Meals()
-    query_results = Meal.objects.all()
-    for m in query_results:
-        meal_img = str(m.Source)
-        meal_name = str(m.Name)
-        break
-
+    #Get info from form
+    if request.method == "POST":
+        guess = request.POST['your_guess']
+        Validate_Name_Input(guess)
+        if 'final' in request.POST:
+            print("final")
+            goto_next_meal = True
+        else:
+            print("check")
+    else:
+        guess = ''
+    
+    #move onto next meal data
+    if goto_next_meal:
+        print("MOVE ON")
+        Next_Meal()
+    
+    #Game beginning
+    if not playing:
+        Start()
+    
+    #fetch meal vars
+    cur_meal = Get_Cur_Meal()
+    global meal_index
+    #pass info to html
     return render(
         request,
         'guessing/meal.html',
         {
-            'meal_img': meal_img,
-            'meal_name': meal_name
+            'meal_img': cur_meal.Source,
+            'meal_name': cur_meal.Name,
+            'last_guess': guess,
+            'pot_points': potential_points,
+            'index': meal_index
         }
     )

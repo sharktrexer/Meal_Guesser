@@ -11,9 +11,21 @@
     <span class="text-contain">
         This meal is known as    <span class="message">{{ meal_name }} </span>
     </span>
-    
+
+    {% if pot_points > 0 %}
+    <span class="text-contain">Potential Points: {{ pot_points }} </span>
+    {% endif %}
+
+    <span class="text-contain">index: {{ index }} </span>
+
     <div class="text-contain">
-        <button id="guess">Enter Guess</button>
+        <form action="{% url 'rand_meal' %}" method="post"> 
+            {% csrf_token %}
+            <label for="your_guess">Guess:</label>
+            <input id="your_guess" type = text name="your_guess" value ="{{ last_guess }}">
+            <input type="submit" name="check" value="Check Guess">
+            <input type="submit" name="final" value="Submit Guess">
+        </form>
     </div> 
 {% endblock %}
 

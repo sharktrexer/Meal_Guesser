@@ -19,7 +19,7 @@ playing = False                 # if the game is playing
 max_point_per_meal = []         # number of possible points per meal (words in meal name)
                                 # index lines up with pk of meals in database
 
-def get_max_poss_points():
+def Get_Max_Poss_Points():
     global max_point_per_meal
     
     max = 0
@@ -27,16 +27,16 @@ def get_max_poss_points():
         max += i
     return max
  
-def reset_round_vars():
+def Reset_Round_Vars():
     global potential_points, chances
     
     potential_points = -1
     chances = MAX_CHANCES
  
-def start():
+def Start():
     global points, meal_index, playing, max_point_per_meal
     
-    reset_round_vars()
+    Reset_Round_Vars()
     points = 0
     meal_index = 0
     playing = True
@@ -44,20 +44,24 @@ def start():
     
     Load_Meals()
  
- # increments index, returns if that index is valid anymore   
-def next_meal():
-    global meal_index, playing
+# increments index, adds points, & returns if that index is valid anymore   
+def Next_Meal():
+    global meal_index, playing, potential_points, points
     
-    meal_index += 1
-    reset_round_vars()
+    Reset_Round_Vars()
+    
+    points += potential_points
+    
+    meal_index = meal_index + 1
+    print("index ", meal_index)
     if meal_index >= MAX_MEALS:
         playing=False
         return False
     return True
 
-def cash_in():
-    global potential_points, points
-    points += potential_points
+def Get_Cur_Meal():
+    meal_results = Meal.objects.all()
+    return meal_results.get(pk= meal_index)
 
 '''
 splits user input, checks if any of the split words are included in the meal name
@@ -72,7 +76,7 @@ def Validate_Name_Input(name_input):
     
     # Lists
     input_vals = name_input.lower().split()
-    meal_name = str(Meal.objects.get(meal_id= meal_index).cleaned_name)
+    meal_name = str(Meal.objects.get(pk= meal_index).cleaned_name)
     used_tokens = []
     
     p = 0
@@ -83,7 +87,8 @@ def Validate_Name_Input(name_input):
             p += 1
         used_tokens.append(token)
       
-    # Adds points to potential in case user wants to guess for a better chance of points      
+    # Adds points to potential in case user wants to guess for a better chance of points  
+    print('points: ', p)    
     if p == 0:
         return False
     if p > potential_points:
