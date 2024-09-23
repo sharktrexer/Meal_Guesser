@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Meal
-from .classes.game_controller import *
+from .classes.game_controller import Game_Controller
+
+gc = Game_Controller()
   
 # Views
-
 def home(request):
     return render(
         request,
@@ -17,7 +17,7 @@ def rand_meal(request):
     #Get info from form
     if request.method == "POST":
         guess = request.POST['your_guess']
-        Validate_Name_Input(guess)
+        gc.Validate_Name_Input(guess)
         if 'final' in request.POST:
             print("final")
             goto_next_meal = True
@@ -28,15 +28,14 @@ def rand_meal(request):
     
     #move onto next meal data
     if goto_next_meal:
-        print("MOVE ON")
-        Next_Meal()
+        gc.Next_Meal()
     
     #Game beginning
-    if not playing:
-        Start()
+    if not gc.playing:
+        gc.Start()
     
     #fetch meal vars
-    cur_meal = Get_Cur_Meal()
+    cur_meal = gc.Get_Cur_Meal()
     global meal_index
     #pass info to html
     return render(
@@ -46,7 +45,7 @@ def rand_meal(request):
             'meal_img': cur_meal.Source,
             'meal_name': cur_meal.Name,
             'last_guess': guess,
-            'pot_points': potential_points,
-            'index': meal_index
+            'pot_points': gc.potential_points,
+            'index': gc.meal_index
         }
     )
