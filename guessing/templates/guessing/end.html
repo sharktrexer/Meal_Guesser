@@ -1,0 +1,17 @@
+{% extends "guessing/layout.html" %}
+{% block title %}
+    Finished!
+{% endblock %}
+{% block content %}
+<span class="text-contain">
+    <span>You have guessed on all available meals!</span>
+</span>
+
+<span class="text-contain">
+    
+    <span>Points Earned: {{ points }}</span>
+    
+    <span>Max Possible Score: {{ max_points }}</span>
+</span>
+
+{% endblock %}

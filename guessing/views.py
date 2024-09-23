@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .classes.game_controller import Game_Controller
+from django.urls import reverse
 
 gc = Game_Controller()
   
@@ -13,22 +14,20 @@ def home(request):
 def rand_meal(request):
     
     goto_next_meal = False
+    guess = ''
     
     #Get info from form
     if request.method == "POST":
         guess = request.POST['your_guess']
         gc.Validate_Name_Input(guess)
         if 'final' in request.POST:
-            print("final")
-            goto_next_meal = True
-        else:
-            print("check")
-    else:
-        guess = ''
+            goto_next_meal = True     
     
     #move onto next meal data
     if goto_next_meal:
-        gc.Next_Meal()
+        if not gc.Next_Meal():
+            return redirect(ending)
+        guess = ''
     
     #Game beginning
     if not gc.playing:
@@ -47,5 +46,16 @@ def rand_meal(request):
             'last_guess': guess,
             'pot_points': gc.potential_points,
             'index': gc.meal_index
+        }
+    )
+    
+def ending(request):
+    
+    return render (
+        request,
+        'guessing/end.html',
+        {
+            'points': gc.points,
+            'max_points': gc.Get_Max_Poss_Points()
         }
     )

@@ -5,6 +5,8 @@ Meal Guesser - Home
 {% block content %}
     <div class="text-contain">
         Welcome to <span class="message"> Guess That Meal!</span>
+    </div> 
+    <div class="text-contain">
         <form method='GET' action={% url 'rand_meal'%}>
             <input type='submit' value ='Start Playing!'>
         </form>

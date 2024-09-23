@@ -6,6 +6,7 @@ class Meal(models.Model):
     Name = models.CharField(max_length=50)
     Source = models.TextField()
     cleaned_name = models.CharField(max_length=50)
+    Value = models.SmallIntegerField(blank=True)
     
     def __str__(self):
         str_id = "(" + str(self.meal_id) + ") "
