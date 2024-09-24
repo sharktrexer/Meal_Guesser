@@ -30,11 +30,13 @@ class Game_Controller:
                 
         return self.max_points            
     
+    # these vars are required every time user wants to guess on a new meal
     def Reset_Round_Vars(self):
 
         self.potential_points = -1 # -1 means guess has not been recieved
         self.chances = MAX_CHANCES
     
+    # sets up vars so the game can be played again
     def Start(self):
         
         self.Reset_Round_Vars()
@@ -56,9 +58,10 @@ class Game_Controller:
 
         if self.meal_index >= MAX_MEALS:
             self.playing = False
-            return False
-        return True
 
+        return self.playing
+
+    # uses index as pk for meal obj getting
     def Get_Cur_Meal(self):
         meal_results = Meal.objects.all()
         return meal_results.get(pk= self.meal_index)
@@ -76,9 +79,10 @@ class Game_Controller:
         # Lists
         input_vals = name_input.lower().split()
         meal_name = str(Meal.objects.get(pk= self.meal_index).cleaned_name)
-        meal_words = meal_name.split()
+        meal_words = meal_name.split() # individual words of the name to be checked against
         used_tokens = []
         
+        # points earned
         p = 0
         
         # Loop
