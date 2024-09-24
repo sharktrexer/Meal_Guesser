@@ -7,6 +7,8 @@ footer {
     position: fixed;
 	bottom: 0;
 	margin: 10px;
+    color: pink;
+    font-size: 15px;
 }
 
 span {
@@ -31,11 +33,18 @@ label {
     justify-content: center;
     align-items: center;
     padding: 5px;
+    font-size: 18px;
 }
 
 .text-contain span {
     padding: 4px;
     
+}
+
+.wrap-text {
+    text-wrap: pretty;
+    text-align: center;
+    width: 50%;
 }
 
 /* Meal Picture Styling */
