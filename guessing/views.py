@@ -15,6 +15,11 @@ def rand_meal(request):
     goto_next_meal = False
     guess = ''
     
+    # user coming from home should reset the game!
+    if request.method == "GET" and gc.playing:
+        gc.playing = False
+        
+    
     #Get info from form
     if request.method == "POST":
         # deletion means no other data was posted
@@ -24,10 +29,9 @@ def rand_meal(request):
             guess = request.POST['your_guess']
             gc.Validate_Name_Input(guess)
             
-            if 'final' in request.POST:
+            if 'final' in request.POST or gc.chances < 0:
                 goto_next_meal = True    
             
-        
     
     #move onto next meal data
     if goto_next_meal:
@@ -51,7 +55,9 @@ def rand_meal(request):
             'meal_name': cur_meal.Name,
             'last_guess': guess,
             'pot_points': gc.potential_points,
-            'index': gc.meal_index
+            'index': gc.meal_index,
+            'points': gc.points,
+            'chances': gc.chances
         }
     )
     

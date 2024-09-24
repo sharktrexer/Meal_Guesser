@@ -14,9 +14,11 @@
         This meal is known as    <span class="message">{{ meal_name }} </span>
     </span>
     -->
-    {% if pot_points > 0 %}
-    <span class="text-contain">Potential Points: {{ pot_points }} </span>
-    {% endif %}
+
+    <span class="text-contain">
+        <span>Checks Left: {{ chances }} </span>
+        <span>Score: {{ points }} </span>
+    </span>
 
     <div class="text-contain">
         <form action="{% url 'rand_meal' %}" method="post"> 
@@ -27,6 +29,10 @@
             <input type="submit" name="final" value="Submit Guess">
         </form>
     </div> 
+
+    {% if pot_points >= 0 %}
+    <span class="text-contain"> Potential Points: {{ pot_points }} </span>
+    {% endif %}
 {% endblock %}
 
 

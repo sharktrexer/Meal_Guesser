@@ -9,6 +9,14 @@ footer {
 	margin: 10px;
 }
 
+span {
+    color: pink
+}
+
+label {
+    color: pink
+}
+
 .content {
     padding: 5px;
 }
@@ -22,10 +30,11 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 5px;
 }
 
 .text-contain span {
-    padding: 5px;
+    padding: 4px;
     
 }
 
