@@ -13,11 +13,11 @@ SUBS = {
 class Game_Controller:
     points = 0                      # total points player earned
     potential_points = -1           # points that can be cashed in before chances expire
+    max_points = 0                  # number of possible points per meal (words in every meal name)
     chances = MAX_CHANCES           # num of guess attempts player has remaining
     meal_index = 0                  # index of current meal displayed
     playing = False                 # if the game is playing
-    
-    max_points = 0                  # number of possible points per meal (words in every meal name)
+
     
     ''' adds up all possible points, fetching from database
         subsequent calls skip database query since the data has been saved already
@@ -60,7 +60,8 @@ class Game_Controller:
             self.playing = False
 
         return self.playing
-
+    #end method
+    
     # uses index as pk for meal obj getting
     def Get_Cur_Meal(self):
         meal_results = Meal.objects.all()
@@ -106,7 +107,7 @@ class Game_Controller:
         rec_meals = []
         
         # don't add more than 10 meals to database
-        if len(Meal.objects.all()) > 0:
+        if Meal.objects.all():
             return
         
         while(i < MAX_MEALS):
@@ -138,3 +139,8 @@ class Game_Controller:
             rec_meals.append(meal_name)
             i += 1
     #end method         
+
+    # DELETES ALL meal objs
+    def Delete_Meals(self):
+        if Meal.objects.all():
+            Meal.objects.all().delete()

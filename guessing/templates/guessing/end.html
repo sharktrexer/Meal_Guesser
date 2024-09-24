@@ -3,6 +3,7 @@
     Finished!
 {% endblock %}
 {% block content %}
+
 <span class="text-contain">
     <span>You have guessed on all available meals!</span>
 </span>
@@ -13,5 +14,18 @@
     
     <span>Max Possible Score: {{ max_points }}</span>
 </span>
+
+<div class="text-contain">
+    <form method='GET' action={% url 'home'%}>
+        <input type='submit'  value ='Go Home'>
+    </form>
+</div> 
+
+<div class="text-contain">
+    <form method='post' action={% url 'rand_meal'%}>
+        {% csrf_token %}
+        <input type='submit' name="delete" value ='Generate New Meals'>
+    </form>
+</div> 
 
 {% endblock %}

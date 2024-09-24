@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .classes.game_controller import Game_Controller
-from django.urls import reverse
 
 gc = Game_Controller()
   
@@ -18,10 +17,17 @@ def rand_meal(request):
     
     #Get info from form
     if request.method == "POST":
-        guess = request.POST['your_guess']
-        gc.Validate_Name_Input(guess)
-        if 'final' in request.POST:
-            goto_next_meal = True     
+        # deletion means no other data was posted
+        if 'delete' in request.POST:
+            gc.Delete_Meals()
+        else: 
+            guess = request.POST['your_guess']
+            gc.Validate_Name_Input(guess)
+            
+            if 'final' in request.POST:
+                goto_next_meal = True    
+            
+        
     
     #move onto next meal data
     if goto_next_meal:
