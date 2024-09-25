@@ -57,7 +57,8 @@ def rand_meal(request):
             'pot_points': gc.potential_points,
             'index': gc.meal_index,
             'points': gc.points,
-            'chances': gc.chances
+            'chances': gc.chances,
+            'poss_points': cur_meal.Value
         }
     )
     
