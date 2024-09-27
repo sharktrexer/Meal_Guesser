@@ -1,6 +1,6 @@
 body {
     background-color: teal;
-    
+    height: 100%;
 }
 
 footer {
@@ -11,34 +11,45 @@ footer {
     font-size: 15px;
 }
 
-span {
+span, label {
     color: pink
-}
-
-label {
-    color: pink
-}
-
-.content {
-    padding: 5px;
 }
 
 .message {
     font-weight: 600;
     color: white;
 }
-
-.text-contain {
+/* Flex box for body content*/
+.contain, .box {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 5px;
     font-size: 18px;
+    height: 80vh;
 }
 
-.text-contain span {
-    padding: 4px;
-    
+.contain input, span {
+    margin: 4px;
+}
+
+/* Meal Picture Styling */
+.contain img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 300px;
+}
+
+/* Meal game container */
+.box {
+    width: 30%;
+    height: 70%;
+    background-color: rgb(172, 108, 44);
+    margin: 5px;
+}
+
+.box > span {
+    margin: 1%;
 }
 
 .wrap-text {
@@ -47,16 +58,4 @@ label {
     width: 50%;
 }
 
-/* Meal Picture Styling */
-.pic-contain {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1%;
-}
 
-.pic-contain img {
-    max-width: 100%;
-    max-height: 100%;
-    width: 300px;
-}

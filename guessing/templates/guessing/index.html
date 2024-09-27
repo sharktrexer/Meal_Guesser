@@ -3,10 +3,9 @@
 Meal Guesser - Home
 {% endblock %}
 {% block content %}
-    <div class="text-contain">
+    <div class="contain">
         <span> Welcome to <span class="message"> Guess That Meal! </span> </span>
-    </div> 
-    <div class="text-contain">
+    
         <span class="wrap-text"> In this game you will have to guess the name of 10 meals just by their image.
             You have 3 chances to check how many points your guess earns before submitting a final answer.
             Every correct word in your guess that corresponds with a word in the meal name results in 1 point.
@@ -15,8 +14,7 @@ Meal Guesser - Home
             At the end of the game you will get your final score and how many points you could have obtained.
             Press the button below to start. Have fun!
         </span>
-    </div> 
-    <div class="text-contain">
+        <br>
         <form method='GET' action={% url 'rand_meal'%}>
             <input type='submit' value ='Start Playing!'>
         </form>

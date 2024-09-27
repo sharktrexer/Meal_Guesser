@@ -5,36 +5,42 @@
 {% block content %}
 
     <!-- Displays random meal image -->
-    <div class="pic-contain">
-        <!-- h & w preset to stop image loading jank -->
-        <img src= {{meal_img}} width='300px' height='300px'> 
+    <div class="contain">
+        <div class="box">
+            <div>
+                <!-- h & w preset to stop image loading jank -->
+                <img src= {{meal_img}} width='300px' height='300px'> 
+            </div>
+            <!-- For debugging
+            <span>
+                This meal is known as    <span class="message">{{ meal_name }} </span>
+            </span>
+            -->
+
+            <span>
+                <span>Checks Left: {{ chances }} </span>
+                <span>Score: {{ points }} </span>
+            </span>
+
+            <div>
+                <form action="{% url 'rand_meal' %}" method="post"> 
+                    {% csrf_token %}
+                    <label for="your_guess">Guess:</label>
+                    <input id="your_guess" type = text name="your_guess" value ="{{ last_guess }}">
+                    <input type="submit" name="check" value="Check Guess">
+                    <input type="submit" name="final" value="Submit Guess">
+                </form>
+            </div> 
+
+            <span> Meal Point Value: {{ poss_points }} </span>
+            <!-- Only sure potential points after user guesses -->
+            {% if pot_points >= 0 %}
+            <span> Potential Points: {{ pot_points }} </span>
+            {% else %}
+            <span> &nbsp;</span>
+            {% endif %}
+        </div>
     </div>
-    <!-- For debugging
-    <span class="text-contain">
-        This meal is known as    <span class="message">{{ meal_name }} </span>
-    </span>
-    -->
-
-    <span class="text-contain">
-        <span>Checks Left: {{ chances }} </span>
-        <span>Score: {{ points }} </span>
-    </span>
-
-    <div class="text-contain">
-        <form action="{% url 'rand_meal' %}" method="post"> 
-            {% csrf_token %}
-            <label for="your_guess">Guess:</label>
-            <input id="your_guess" type = text name="your_guess" value ="{{ last_guess }}">
-            <input type="submit" name="check" value="Check Guess">
-            <input type="submit" name="final" value="Submit Guess">
-        </form>
-    </div> 
-
-    <span class="text-contain"> Meal Point Value: {{ poss_points }} </span>
-    {% if pot_points >= 0 %}
-    <span class="text-contain"> Potential Points: {{ pot_points }} </span>
-    {% endif %}
-    
 {% endblock %}
 
 
