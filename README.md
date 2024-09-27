@@ -30,8 +30,7 @@ To play the game please follow these instructions:
 7. If you want the server to run on a different port, see [here](https://docs.djangoproject.com/en/5.1/ref/django-admin/#runserver)
 
 ## Examples
-![meal 1](https://github.com/user-attachments/assets/bb3d43bf-de06-46cd-96e7-1e9dd4a44a6d)
+![meal1](pics/meal_initial.PNG)
+![meal2](pics/meal_guessed.PNG)
 
-![meal 2](https://github.com/user-attachments/assets/b82450a8-d719-40ad-bf41-0f83c57eafb9)
-
-![meal 3](https://github.com/user-attachments/assets/8688427b-95eb-4f9d-b901-c665258decf1)
+![meal3](pics/meal_end.PNG)
