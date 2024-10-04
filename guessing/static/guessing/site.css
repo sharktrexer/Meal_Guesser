@@ -1,6 +1,7 @@
 body {
     background-color: teal;
     height: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 footer {
@@ -13,6 +14,11 @@ footer {
 
 span, label {
     color: pink
+}
+
+input:hover {
+    transform: scale(1.05);
+    transition: 0.25s;
 }
 
 .message {

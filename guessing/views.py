@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import Http404
 from .classes.game_controller import Game_Controller
 
 gc = Game_Controller()
@@ -41,11 +41,14 @@ def rand_meal(request):
     
     #Game beginning
     if not gc.playing:
-        gc.Start()
+        try:
+            gc.Start()
+        except:
+            raise Http404("Could Not Establish Connection to the TheMealDB API")
     
     #fetch meal vars
     cur_meal = gc.Get_Cur_Meal()
-    global meal_index
+    
     #pass info to html
     return render(
         request,
