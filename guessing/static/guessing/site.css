@@ -34,7 +34,7 @@ input:hover {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    font-size: 18px;
+    font-size: 21px;
     height: 95vh;
 }
 .contain input, span {
