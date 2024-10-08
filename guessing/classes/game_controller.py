@@ -22,7 +22,7 @@ class Game_Controller:
     ''' adds up all possible points, fetching from database
         subsequent calls skip database query since the data has been saved already
     '''
-    def Get_Max_Poss_Points(self):
+    def get_max_poss_points(self):
         if self.max_points == 0:
             meal_results = Meal.objects.all()
             for m in meal_results:
@@ -31,28 +31,28 @@ class Game_Controller:
         return self.max_points            
     
     # these vars are required every time user wants to guess on a new meal
-    def Reset_Round_Vars(self):
+    def reset_round_vars(self):
 
         self.potential_points = -1 # -1 means guess has not been recieved
         self.chances = MAX_CHANCES
     
     # sets up vars so the game can be played again
-    def Start(self):
+    def start(self):
         
-        self.Reset_Round_Vars()
+        self.reset_round_vars()
         self.points = 0
         self.meal_index = 0
         self.playing = True
         self.max_points = 0
         
-        self.Load_Meals()
+        self.load_meals()
     
     # increments index, adds points, & returns if that index is valid anymore   
-    def Next_Meal(self):
+    def next_meal(self):
         
         self.points += self.potential_points
         
-        self.Reset_Round_Vars()
+        self.reset_round_vars()
 
         self.meal_index += 1
 
@@ -63,7 +63,7 @@ class Game_Controller:
     #end method
     
     # uses index as pk for meal obj getting
-    def Get_Cur_Meal(self):
+    def get_cur_meal(self):
         meal_results = Meal.objects.all()
         return meal_results.get(pk= self.meal_index)
 
@@ -73,7 +73,7 @@ class Game_Controller:
     split words are also kept track of, preventing input like "bacon bacon" giving out 2 points for "Bacon Eggs"
     returns true if points were awarded
     '''
-    def Validate_Name_Input(self, name_input):
+    def validate_name_input(self, name_input):
         
         self.chances -= 1
         
@@ -101,7 +101,7 @@ class Game_Controller:
     '''
     Fetches 10 unique random meals from TheMealDB API
     '''
-    def Load_Meals(self):
+    def load_meals(self):
         
         i = 0
         rec_meals = []
@@ -141,6 +141,6 @@ class Game_Controller:
     #end method         
 
     # DELETES ALL meal objs
-    def Delete_Meals(self):
+    def delete_meals(self):
         if Meal.objects.all():
             Meal.objects.all().delete()

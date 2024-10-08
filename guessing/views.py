@@ -24,10 +24,10 @@ def rand_meal(request):
     if request.method == "POST":
         # deletion means no other data was posted
         if 'delete' in request.POST:
-            gc.Delete_Meals()
+            gc.delete_meals()
         else: 
             guess = request.POST['your_guess']
-            gc.Validate_Name_Input(guess)
+            gc.validate_name_input(guess)
             
             if 'final' in request.POST or gc.chances < 0:
                 goto_next_meal = True    
@@ -35,19 +35,19 @@ def rand_meal(request):
     
     #move onto next meal data
     if goto_next_meal:
-        if not gc.Next_Meal():
+        if not gc.next_meal():
             return redirect(ending)
         guess = ''
     
     #Game beginning
     if not gc.playing:
         try:
-            gc.Start()
+            gc.start()
         except:
             raise Http404("Could Not Establish Connection to the TheMealDB API")
     
     #fetch meal vars
-    cur_meal = gc.Get_Cur_Meal()
+    cur_meal = gc.get_cur_meal()
     
     #pass info to html
     return render(
@@ -72,6 +72,6 @@ def ending(request):
         'guessing/end.html',
         {
             'points': gc.points,
-            'max_points': gc.Get_Max_Poss_Points()
+            'max_points': gc.get_max_poss_points()
         }
     )
