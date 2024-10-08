@@ -14,7 +14,7 @@ footer {
 /* Text pops against background */
 span, label, footer {
     color: pink;
-    text-shadow: 2px 2px 2px #000000;   
+    text-shadow: 2px 2px 2px black;   
 }
 
 /* hover effect */
@@ -57,7 +57,7 @@ input:hover {
 }
 
 /* Meal game container
-background is hidden to be replaced by meal img */
+background is hidden in z axis to be replaced by meal img */
 .box {
     width: 30%;
     height: 70%;
@@ -81,11 +81,11 @@ background is hidden to be replaced by meal img */
     top: 0;
     position: absolute;
     background: inherit;
-    filter: blur(18px);
-    z-index: 1;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    filter: blur(18px);
+    z-index: 1;
 }
 
 .wrap-text {
