@@ -67,6 +67,7 @@ background is hidden in z axis to be replaced by meal img */
 }
 .box > span {
     margin: 1%;
+    text-align: center;
 }
 /* Children can be clicked */
 .box * {
@@ -92,4 +93,19 @@ background is hidden in z axis to be replaced by meal img */
     text-wrap: pretty;
     text-align: center;
     width: 50%;
+}
+
+/* Creating bigger buttons on smaller screens 
+ Disabling hover effect since using touch screen doesn't auto lose focus*/
+@media screen and (min-width: 600) {
+    input, input:hover {
+        width: 200px; height: 50px; 
+        transform: scale(1) !important;
+    }      
+}
+@media screen and (max-width: 1400px) {
+    input, input:hover {
+        width: 160px; height: 40px;  
+        transform: scale(1) !important;
+    }
 }
