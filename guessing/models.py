@@ -3,11 +3,10 @@ from django.db import models
 # Create your models here.
 class Meal(models.Model):
     meal_id = models.AutoField(primary_key=True)
-    Name = models.CharField(max_length=50)
-    Source = models.TextField()
+    name = models.CharField(max_length=50)
+    source = models.TextField()
     cleaned_name = models.CharField(max_length=50)
-    Value = models.SmallIntegerField()
-    
+    value = models.SmallIntegerField()
+
     def __str__(self):
-        str_id = "(" + str(self.meal_id) + ") "
-        return str_id + self.Name
+        return f"({self.meal_id}) {self.name}"
