@@ -133,9 +133,9 @@ class Game_Controller:
             num_of_meal_tokens = len(meal_name_clean.split())        
             
             # Adding to SQLite database
-            Meal.objects.create(meal_id= i, Name= meal_name, 
-                                Source= meal_img, cleaned_name= meal_name_clean,
-                                Value= num_of_meal_tokens)
+            Meal.objects.create(meal_id= i, name= meal_name, 
+                                source= meal_img, cleaned_name= meal_name_clean,
+                                value= num_of_meal_tokens)
             rec_meals.append(meal_name)
             i += 1
     #end method         

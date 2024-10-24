@@ -43,8 +43,8 @@ def rand_meal(request):
     if not gc.playing:
         try:
             gc.start()
-        except:
-            raise Http404("Could Not Establish Connection to the TheMealDB API")
+        except Exception as e:
+            raise Http404("Could Not Establish Connection to the TheMealDB API \n " + str(e))
     
     #fetch meal vars
     cur_meal = gc.get_cur_meal()
@@ -54,14 +54,14 @@ def rand_meal(request):
         request,
         'guessing/meal.html',
         {
-            'meal_img': cur_meal.Source,
-            'meal_name': cur_meal.Name,
+            'meal_img': cur_meal.source,
+            'meal_name': cur_meal.name,
             'last_guess': guess,
             'pot_points': gc.potential_points,
             'index': gc.meal_index,
             'points': gc.points,
             'chances': gc.chances,
-            'poss_points': cur_meal.Value
+            'poss_points': cur_meal.value
         }
     )
     
